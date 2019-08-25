@@ -1,3 +1,3 @@
-# GoCasts
+# go-learning
 
-Companion repo to a course on Udemy.com
+A Golang learning repo
