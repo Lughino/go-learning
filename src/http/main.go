@@ -22,11 +22,11 @@ func (logWriter) Write(bs []byte) (int, error) {
 // ==========================================================
 
 type shape interface {
-	getArea()
+	getArea() float64
 }
 
 func printArea(s shape) {
-	s.getArea()
+	fmt.Println("The area of this shape is:", s.getArea())
 }
 
 type triangle struct {
@@ -37,12 +37,12 @@ type square struct {
 	sideLength float64
 }
 
-func (t triangle) getArea() {
-	fmt.Println("The area of this triangle is:", 0.5*t.base*t.height)
+func (t triangle) getArea() float64 {
+	return 0.5 * t.base * t.height
 }
 
-func (s square) getArea() {
-	fmt.Println("The area of this square is:", s.sideLength*s.sideLength)
+func (s square) getArea() float64 {
+	return s.sideLength * s.sideLength
 }
 
 func main() {
