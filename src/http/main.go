@@ -17,6 +17,34 @@ func (logWriter) Write(bs []byte) (int, error) {
 	return len(bs), nil
 }
 
+// ==========================================================
+//                Assignment 1 Interfaces
+// ==========================================================
+
+type shape interface {
+	getArea()
+}
+
+func printArea(s shape) {
+	s.getArea()
+}
+
+type triangle struct {
+	base   float64
+	height float64
+}
+type square struct {
+	sideLength float64
+}
+
+func (t triangle) getArea() {
+	fmt.Println("The area of this triangle is:", 0.5*t.base*t.height)
+}
+
+func (s square) getArea() {
+	fmt.Println("The area of this square is:", s.sideLength*s.sideLength)
+}
+
 func main() {
 	res, err := http.Get("https://google.com")
 	if err != nil {
@@ -31,4 +59,10 @@ func main() {
 
 	lw := logWriter{}
 	io.Copy(lw, res.Body)
+
+	t := triangle{base: 12, height: 7}
+	s := square{sideLength: 23}
+
+	printArea(t)
+	printArea(s)
 }
